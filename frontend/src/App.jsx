@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
-import SignUp from './pages/SignUp'
+import SignUp from './pages/Signup'
 import getCurrentUser from './customHooks/getCurrentUser'
 import { useDispatch, useSelector } from 'react-redux'
 import Home from './pages/Home'
