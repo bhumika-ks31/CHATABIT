@@ -1,5 +1,4 @@
 import {configureStore} from "@reduxjs/toolkit"
-// frontend/src/redux/Store.js
 import userSlice from './userSlice';
 
 import messageSlice from "./messageSlice"
