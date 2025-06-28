@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { serverUrl } from '../main'
 import { useDispatch } from 'react-redux'
-import { setSelectedUser, setUserData } from '../redux/userSlice'
+import { setSelectedUser, setUserData } from '../redux/UserSlice'
 
 function Login() {
   const navigate = useNavigate();

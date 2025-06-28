@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { serverUrl } from '../main';
-import { setUserData } from '../redux/userSlice';
+import { setUserData } from '../redux/UserSlice';
 import { toast } from 'react-hot-toast';
 
 function Profile() {

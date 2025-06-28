@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { serverUrl } from '../main'
 import { useDispatch } from 'react-redux'
-import { setUserData } from '../redux/userSlice'
+import { setUserData } from '../redux/UserSlice'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 function SignUp() {
