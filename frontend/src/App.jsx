@@ -9,7 +9,7 @@ import Profile from './pages/Profile'
 import getOtherUsers from './customHooks/getOtherUser'
 import {io} from "socket.io-client"
 import { serverUrl } from './main'
-import { setOnlineUsers, setSocket } from './redux/userSlice'
+import { setOnlineUsers, setSocket } from './redux/UserSlice'
 
 function App() {
   getCurrentUser()
