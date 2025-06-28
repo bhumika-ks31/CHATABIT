@@ -1,5 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit"
-import userSlice from '../redux/userSlice.js';
+// frontend/src/redux/Store.js
+import userSlice from './userSlice';
 
 import messageSlice from "./messageSlice"
 export const store=configureStore({
