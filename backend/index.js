@@ -13,8 +13,7 @@ const port=process.env.PORT || 5000
 
 
 app.use(cors({
-    origin:"https://chatabit-frontend4.onrender.com
- , http://localhost:5173",
+    origin:"https://chatabit-frontend4.onrender.com",
     credentials:true
 }))
 app.use(express.json())
