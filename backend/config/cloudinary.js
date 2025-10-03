@@ -1,43 +1,20 @@
 import { v2 as cloudinary } from 'cloudinary';
-import streamifier from 'streamifier';
-
-// Cloudinary config
+import fs from "fs"
+const uploadOnCloudinary=async (filePath)=>{
 cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
-});
+    cloud_name:process.env.CLOUD_NAME, 
+    api_key:process.env.API_KEY, 
+    api_secret: process.env.API_SECRET
+})
+try {
+    const uploadResult = await cloudinary.uploader.upload(filePath) 
+    fs.unlinkSync(filePath)
+    return uploadResult.secure_url
 
-/**
- * Upload a file buffer to Cloudinary
- * @param {Buffer} fileBuffer - The file buffer (from multer memoryStorage)
- * @returns {Promise<string>} - Secure URL of uploaded image
- */
-const uploadOnCloudinary = (fileBuffer) => {
-  return new Promise((resolve, reject) => {
-    if (!fileBuffer) return reject("No file buffer provided");
+} catch (error) {
+    fs.unlinkSync(filePath)
+    console.log(error)
+}
+}
 
-    const uploadStream = cloudinary.uploader.upload_stream(
-      {
-        folder: 'user_profiles',
-        resource_type: 'auto', // auto-detect image/video
-      },
-      (error, result) => {
-        if (error) {
-          console.error("Cloudinary Upload Error:", error);
-          return reject(error);
-        }
-
-        if (!result || !result.secure_url) {
-          return reject("No URL returned from Cloudinary");
-        }
-
-        resolve(result.secure_url);
-      }
-    );
-
-    streamifier.createReadStream(fileBuffer).pipe(uploadStream);
-  });
-};
-
-export default uploadOnCloudinary;
+export default uploadOnCloudinary

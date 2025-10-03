@@ -1,12 +1,12 @@
-// middlewares/multer.js
 import multer from "multer";
 
-// ✅ Store files in memory (not disk) so Cloudinary can use them
-const storage = multer.memoryStorage();
+const storage=multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,"./public")
+    },
+    filename:(req,file,cb)=>{
+        cb(null,file.originalname)
+    }
+})
 
-export const upload = multer({
-  storage,
-  limits: {
-    fileSize: 10 * 1024 * 1024, // Max file size: 10 MB
-  },
-});
+export const upload=multer({storage})
