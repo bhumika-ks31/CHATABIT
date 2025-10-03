@@ -1,50 +1,54 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { serverUrl } from '../main'
-import { useDispatch } from 'react-redux'
-import { setUserData } from '../redux/UserSlice'
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { serverUrl } from '../main';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../redux/UserSlice';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function SignUp() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [show, setShow] = useState(false)
-  const [userName, setUserName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [err, setErr] = useState("")
+  const [show, setShow] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
 
   const handleSignUp = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
     try {
-      const result = await axios.post(`${serverUrl}/api/auth/signup`, {
-        userName, email, password
-      }, { withCredentials: true })
+      const result = await axios.post(
+        `${serverUrl}/api/auth/signup`,
+        { userName, email, password },
+        { withCredentials: true } // ✅ important for cookies
+      );
 
-      dispatch(setUserData(result.data))
-      navigate("/profile")
-      setEmail("")
-      setPassword("")
-      setUserName("")
-      setErr("")
+      dispatch(setUserData(result.data));
+      navigate("/profile");
+
+      // reset form
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setErr("");
     } catch (error) {
-      console.log(error)
-      setErr(error?.response?.data?.message || "Signup failed.")
+      console.error(error);
+      setErr(error?.response?.data?.message || "Signup failed.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden px-4">
-      {/* 🔥 Animated Particle Background */}
+      {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-gray-900 animate-gradient-xy opacity-30 z-0" />
 
-      {/* 🔥 Glass card */}
+      {/* Glass Card */}
       <div className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl shadow-2xl p-8 space-y-6 z-10 animate-fade-in-up">
         <h1 className="text-3xl font-bold text-center">
           Welcome to <span className="text-[#20c7ff]">Chatly</span>
@@ -108,7 +112,7 @@ function SignUp() {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;
