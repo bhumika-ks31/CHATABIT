@@ -6,7 +6,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { serverUrl } from '../main';
-import { setUserData } from '../redux/userSlice';
+import { setUserData } from '../redux/userSlice.js';
 function Profile() {
     let {userData}=useSelector(state=>state.user)
     let dispatch=useDispatch()
