@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { IoIosArrowRoundBack } from "react-icons/io";
 import dp from "../assets/dp.webp"
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedUser } from '../redux/userSlice';
+import { setSelectedUser } from '../redux/UserSlice.js';
 import { RiEmojiStickerLine } from "react-icons/ri";
 import { FaImages } from "react-icons/fa6";
 import { RiSendPlane2Fill } from "react-icons/ri";
