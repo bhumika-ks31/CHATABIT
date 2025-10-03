@@ -6,7 +6,7 @@ import { RxCross2 } from "react-icons/rx";
 import { BiLogOutCircle } from "react-icons/bi";
 import { serverUrl } from '../main';
 import axios from 'axios';
-import { setOtherUsers, setSearchData, setSelectedUser, setUserData } from '../redux/userSlice';
+import { setOtherUsers, setSearchData, setSelectedUser, setUserData } from '../redux/UserSlice.js';
 import { useNavigate } from 'react-router-dom';
 function SideBar() {
     let {userData,otherUsers,selectedUser,onlineUsers,searchData} = useSelector(state=>state.user)
