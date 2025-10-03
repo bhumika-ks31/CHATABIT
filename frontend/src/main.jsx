@@ -10,7 +10,7 @@ import { store } from './redux/Store.js';
 export const serverUrl =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:8000'
-    : 'https://your-backend-on-render.com'; // <-- replace with deployed backend URL
+    : 'https://chatabit-backend1.onrender.com'; /
 
 const root = createRoot(document.getElementById('root'));
 root.render(
